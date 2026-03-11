@@ -1,17 +1,16 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import { useRef } from "react";
+import { ScrollTrigger } from "gsap/all";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const GsapScrollTrigger = () => {
+export const Practice5 = () => {
   const scrollRef = useRef();
 
-  // TODO: Implement the gsap scroll trigger
   useGSAP(
     () => {
-      const boxes = gsap.utils.toArray(scrollRef.current.children);
+      const boxes = gsap.utils.toArray(scrollRef.current.children); // Done for getting the children using the react Ref
       boxes.forEach((box) => {
         gsap.to(box, {
           x: 150 * (boxes.indexOf(box) + 5),
@@ -29,8 +28,7 @@ const GsapScrollTrigger = () => {
       });
     },
     { scope: scrollRef },
-  ); // lets The code know when to use this or animation needs to happen
-
+  );
   return (
     <main>
       <h1>GsapScrollTrigger</h1>
@@ -85,14 +83,12 @@ const GsapScrollTrigger = () => {
         <div
           id="scroll-pink"
           className="scroll-box w-20 h-20 rounded-lg bg-pink-500"
-        />
+        ></div>
         <div
           id="scroll-orange"
           className="scroll-box w-20 h-20 rounded-lg bg-orange-500"
-        />
+        ></div>
       </div>
     </main>
   );
 };
-
-export default GsapScrollTrigger;

@@ -1,5 +1,26 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 const GsapStagger = () => {
   // TODO: Implement the gsap.stagger() method
+  useGSAP(() => {
+    gsap.to(".panda-box", {
+      y: 250,
+      rotation: 360,
+      borderRadius: "100%",
+      // repeat: -1,
+      yoyo: true,
+      duration: 2,
+      scale: 2,
+      // stagger: 0.5
+      stagger: {
+        amount: 1.5, // Amount of time to stagger the animation between element
+        grid: [2, 1], // Grid selects number of columns an row in a grid
+        axis: "y", // Axis choose the axis of the animation
+        ease: "circ.inOut", // ease: animation garne wala
+        from: "center", // From: The starting position of the animation
+      },
+    });
+  }, []);
 
   return (
     <main>
@@ -39,6 +60,40 @@ const GsapStagger = () => {
           <div className="w-20 h-20 bg-indigo-600 rounded-lg stagger-box" />
           <div className="w-20 h-20 bg-indigo-700 rounded-lg stagger-box" />
           <div className="w-20 h-20 bg-indigo-800 rounded-lg stagger-box" />
+        </div>
+        
+      </div>
+
+      <div className="mt-20">
+        <div className="flex gap-5">
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
+          <img
+            src="src/img/panda.svg"
+            className="w-20 h-20 rounded:lg panda-box"
+          ></img>
         </div>
       </div>
     </main>

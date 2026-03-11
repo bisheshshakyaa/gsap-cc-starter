@@ -1,5 +1,49 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const GsapTimeline = () => {
   // TODO: Implement the gsap timeline
+  const timeline = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 1,
+    yoyo: false,
+  });
+  useGSAP(() => {
+    timeline.to("#panda", {
+      x: 250,
+      rotation: 360,
+      borderRadius: "100%",
+      duration: 2,
+      ease: "circ.inOut",
+    });
+
+    timeline.to("#panda", {
+      y: 250,
+      rotation: 360,
+      scale: 2,
+      borderRadius: "100%",
+      duration: 2,
+      ease: "back.inOut",
+    });
+
+    timeline.to("#panda", {
+      y: -100,
+      rotation: 360,
+      scale: 2,
+      duration: 2,
+      ease: "back.inOut",
+      borderRadius: "100%",
+    });
+
+    timeline.to("#panda", {
+      x: 500,
+      scale: 2,
+      duration: 2,
+      rotation: 360,
+      ease: "circ.inOut",
+      borderRadius: "100%",
+    });
+  });
 
   return (
     <main>
@@ -35,9 +79,24 @@ const GsapTimeline = () => {
       </p>
 
       <div className="mt-20 space-y-10">
-        <button onClick={() => {}}>Play/Pause</button>
+        <button
+          onClick={() => {
+            if (timeline.paused()) {
+              timeline.play();
+            } else {
+              timeline.pause();
+            }
+          }}
+        >
+          Play/Pause
+        </button>
 
         <div id="yellow-box" className="w-20 h-20 bg-yellow-500 rounded-lg" />
+      </div>
+      <div className="mt-20">
+        <div id="panda" className="w-[5rem] h-20 rounded-lg">
+          <img src="src/img/panda.svg"></img>
+        </div>
       </div>
     </main>
   );
